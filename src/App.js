@@ -1,25 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+import Navbar from './components/Navbar'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {/* can set our own variable in props -> properties */}
+      {/* now we need to give values otherwise nothing will be printed if we dont use default props */}
+      {/* <Navbar brand="TextUtils" about ="About TextUtils"/>  */}
+      {/* <Navbar brand={3} about ="About TextUtils"/>  */} {/* warning because we set proptype as string*/}
+      <Navbar brand="TextUtils" />
+    </>
   );
 }
+
+
 
 export default App;
