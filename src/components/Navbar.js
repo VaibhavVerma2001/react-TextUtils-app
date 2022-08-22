@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 
 function Navbar(props) {
+    // console.log(props);
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
