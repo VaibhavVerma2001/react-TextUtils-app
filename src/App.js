@@ -1,15 +1,18 @@
 import './App.css';
-import Navbar from './components/Navbar'
+import Navbar from './components/Navbar';
+import TextForm from './components/TextForm';
+
+// import {useState} from 'react'; //import usestate hook
+
+// const [text,setText] = useState("Enter text here"); // it means text is variable and its default value is "Enter text here" and we will set this value through setText function without reloading page
 
 function App() {
   return (
     <>
-      {/* can set our own variable in props -> properties */}
-      {/* cant use html attributes here like className etc */}
-      {/* now we need to give values otherwise nothing will be printed if we dont use default props */}
-      {/* <Navbar brand="TextUtils" about ="About TextUtils"/>  */}
-      {/* <Navbar brand={3} about ="About TextUtils"/>  */} {/* warning because we set proptype as string*/}
       < Navbar brand="TextUtils" />
+
+      {/* we want to keep whatever text user write in input field as an variable, so that whenever that change it changes everywhere . So using this as state */}
+      <TextForm heading = "Enter the text to analyze below" />
     </>
   );
 }
