@@ -6,7 +6,7 @@ function Navbar(props) {
     // console.log(props);
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div className="container-fluid">
                     {/* props */}
                     <a className="navbar-brand" href="/">{props.brand}</a>

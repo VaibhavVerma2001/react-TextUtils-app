@@ -11,7 +11,6 @@ function App() {
     <>
       < Navbar brand="TextUtils" />
 
-      {/* we want to keep whatever text user write in input field as an variable, so that whenever that change it changes everywhere . So using this as state */}
       <TextForm heading = "Enter the text to analyze below" />
     </>
   );
