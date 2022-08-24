@@ -1,6 +1,7 @@
 import './App.css';
 import Navbar from './components/Navbar';
-import TextForm from './components/TextForm';
+// import TextForm from './components/TextForm';
+import About from './components/about';
 
 // import {useState} from 'react'; //import usestate hook
 
@@ -11,7 +12,8 @@ function App() {
     <>
       < Navbar brand="TextUtils" />
 
-      <TextForm heading = "Enter the text to analyze below" />
+      {/* <TextForm heading = "Enter the text to analyze below" /> */}
+      <About> </About>
     </>
   );
 }

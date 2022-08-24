@@ -32,13 +32,12 @@ function TextForm(props) {
         //  @?%$*/# 
         for (let i = 0; i < text.length; i++) {
             if (text[i] === '@' || text[i] === '?' || text[i] === '%' || text[i] === '*' || text[i] === '/' || text[i] === '#' || text[i] === '$') {
-
+                //do nothing
             }
             else {
                 newText += text[i];
             }
         }
-
         setText(newText);
     }
 
