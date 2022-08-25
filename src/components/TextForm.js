@@ -10,21 +10,25 @@ function TextForm(props) {
         // console.log("Uppercase was clicked : " + text);
         let newText = text.toUpperCase();
         setText(newText);
+        props.showAlert("Converted to uppercase!", "success");
     }
 
     function handleLoClick() {
         let newText = text.toLowerCase();
         setText(newText);
+        props.showAlert("Converted to lowercase!", "success");
     }
 
     function handleClrClick() {
         let newText = '';
         setText(newText);
+         props.showAlert("Text cleared!", "success");
     }
 
     function handleTrim() {
         let newText = text.trim();
         setText(newText);
+        props.showAlert("Text trimmed!", "success");
     }
 
     function handleSymbols() {
@@ -39,6 +43,7 @@ function TextForm(props) {
             }
         }
         setText(newText);
+        props.showAlert("Symbols removed!", "success");
     }
 
     function handleInverse() {
@@ -51,12 +56,14 @@ function TextForm(props) {
             }
         }
         setText(newText);
+        props.showAlert("Inverted case!", "success");
     }
 
     function handleExtraSpaces() {
         // this will replace 2 or 2+ white spaces from string.
         let newText = text.replace(/\s{2,}/g, ' ').trim()
         setText(newText);
+        props.showAlert("Removed extra spaces!", "success");
     }
 
 
