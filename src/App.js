@@ -5,7 +5,6 @@ import TextForm from './components/TextForm';
 // import About from './components/about';
 import Alert from './components/Alert';
 
-//now we want to manage all states through app.js -- like enable disable dark mode using app.js
 
 
 function App() {
@@ -19,7 +18,6 @@ function App() {
       msg: message,
       type: type
     })
-    // so that alert disappears after 2s because if user dismiss alert then it will not be shown again without reloading site
     setTimeout(() => {
       setAlert(null);
     }, 2000);
@@ -30,11 +28,21 @@ function App() {
       setMode('dark');
       document.body.style.backgroundColor = '#052648';
       showAlert("Dark mode has been enabled", "success");
+      // to change title dynamically
+      document.title = "Dark-mode";
+      // to attract users like add sites do -- but very bad idea
+      // setInterval(function(){
+      //   document.title = "TextUtils is amazing";
+      // },2000);
+      // setInterval(function(){
+      //   document.title = "Click to download now";
+      // },1300);
     }
     else {
       setMode('light');
       document.body.style.backgroundColor = '#fff';
       showAlert("Light mode has been enabled", "success");
+      document.title = "Light-mode";
     }
   }
 
