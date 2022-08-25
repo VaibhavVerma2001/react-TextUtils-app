@@ -55,7 +55,7 @@ function TextForm(props) {
 
     function handleExtraSpaces() {
         // this will replace 2 or 2+ white spaces from string.
-        let newText =  text.replace(/\s{2,}/g, ' ').trim()
+        let newText = text.replace(/\s{2,}/g, ' ').trim()
         setText(newText);
     }
 
@@ -71,8 +71,11 @@ function TextForm(props) {
     return (
         <>
             <div className="container">
-                <h1 className="mb-3 mt-3">{props.heading}</h1>
-                <textarea className="form-control mb-3" id="myBox" rows="8" value={text} onChange={handleOnChange}></textarea> {/*used state */}
+                <h1 className={`mb-3 mt-3 text-${props.mode === 'dark' ? "light" : "dark"}`}>{props.heading}</h1>
+
+                {/* to bgcolor using style */}
+                <textarea className="form-control mb-3" style={{ backgroundColor: props.mode === 'dark' ? "grey" : "white", color: props.mode === 'dark' ? "white" : "grey" }} id="myBox" rows="8" value={text} onChange={handleOnChange}></textarea> {/*used state */}
+
                 <button className="btn btn-primary mb-3 margin-right" onClick={handleUpClick}>Convert to Uppercase</button>
                 <button className="btn btn-primary mb-3 margin-right" onClick={handleLoClick}>Convert to Lowercase</button>
                 <button className="btn btn-primary mb-3 margin-right" onClick={handleClrClick}>Clear Text</button>
@@ -84,12 +87,12 @@ function TextForm(props) {
             </div>
 
             <div className="container">
-                <h1>Your text summary</h1>
-                <p>{text.trim().split(" ").length} words, {text.length} characters</p>
+                <h1 className={`text-${props.mode === 'dark' ? "light" : "dark"}`}>Your text summary</h1>
+                <p className={`text-${props.mode === 'dark' ? "light" : "dark"}`} >{text.trim().split(" ").length} words, {text.length} characters</p>
                 {/* according to google it takes 0.008 min to read 1 word */} {/* toFixed(n) is used to round number upto 3 decimal places */}
-                <p>{(text.trim().split(" ").length * 0.008).toFixed(3)} Minutes read</p>
-                <h2>Preview</h2>
-                <p>{text}</p>
+                <p className={`text-${props.mode === 'dark' ? "light" : "dark"}`}>{(text.trim().split(" ").length * 0.008).toFixed(3)} Minutes read</p>
+                <h2 className={`text-${props.mode === 'dark' ? "light" : "dark"}`}>Preview</h2>
+                <p className={`text-${props.mode === 'dark' ? "light" : "dark"}`}>{text}</p>
             </div>
         </>
     );

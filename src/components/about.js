@@ -1,4 +1,4 @@
-import React ,{useState} from 'react'
+import React, { useState } from 'react'
 
 // let myStyle = {
 //     color:"white" ,
@@ -7,28 +7,26 @@ import React ,{useState} from 'react'
 
 function About() {
 
-    const [myStyle , setMyStyle] = useState({
-        color:"black" ,
-        backgroundColor : "white"
+    const [myStyle, setMyStyle] = useState({
+        color: "black",
+        backgroundColor: "white"
     });
 
-    const [btnText , setbtnText] = useState("Enable Dark Mode");
+    const [btnText, setbtnText] = useState("Enable Dark Mode");
 
-    function togleStyle(){
-        if(myStyle.color === 'white')
-        {
+    function togleStyle() {
+        if (myStyle.color === 'white') {
             setMyStyle({
-                color : "black",
-                backgroundColor : "white"
+                color: "black",
+                backgroundColor: "white"
             });
             setbtnText("Enable Dark Mode");
         }
-        else 
-        {
+        else {
             setMyStyle({
-                color : "white",
-                backgroundColor : "black",
-                border : "1px solid white" //add extra border 
+                color: "white",
+                backgroundColor: "black",
+                border: "1px solid white" //add extra border 
             });
             setbtnText("Enable Light Mode");
         }

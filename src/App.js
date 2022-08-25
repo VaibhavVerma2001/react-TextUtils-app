@@ -1,19 +1,33 @@
 import './App.css';
+import { useState } from 'react';
 import Navbar from './components/Navbar';
-// import TextForm from './components/TextForm';
+import TextForm from './components/TextForm';
 import About from './components/about';
 
-// import {useState} from 'react'; //import usestate hook
+//now we want to manage all states through app.js -- like enable disable dark mode using app.js
 
-// const [text,setText] = useState("Enter text here"); // it means text is variable and its default value is "Enter text here" and we will set this value through setText function without reloading page
 
 function App() {
+  const [mode, setMode] = useState("light"); // to check whether dark mode enabled or not
+
+  function toggleMode() {
+    if (mode === 'light') {
+      setMode('dark');
+      document.body.style.backgroundColor = '#052648';
+    }
+    else {
+      setMode('light');
+      document.body.style.backgroundColor = '#fff';
+    }
+  }
   return (
     <>
-      < Navbar brand="TextUtils" />
+      {/* to set dark mode in navbar */}
+      {/* toggleMode so that when someone click change mode button in changes state */}
+      < Navbar brand="TextUtils" mode={mode} toggleMode={toggleMode} />
 
-      {/* <TextForm heading = "Enter the text to analyze below" /> */}
-      <About> </About>
+      <TextForm heading="Enter the text to analyze below" mode={mode} />
+      {/* <About> </About> */}
     </>
   );
 }

@@ -3,10 +3,9 @@ import PropTypes from 'prop-types';
 
 
 function Navbar(props) {
-    // console.log(props);
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
                 <div className="container-fluid">
                     {/* props */}
                     <a className="navbar-brand" href="/">{props.brand}</a>
@@ -22,10 +21,12 @@ function Navbar(props) {
                                 <a className="nav-link" href="/">{props.about}</a>
                             </li>
                         </ul>
-                        <form className="d-flex">
-                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                            <button className="btn btn-outline-success" type="submit">Search</button>
-                        </form>
+                        {/* to enable/disable dark mode */}
+                        <div className="form-check form-switch">
+                            <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" onClick={props.toggleMode} />
+                            {/* text-dark when mode is light and vice-versa using ternary operator*/}
+                            <label className={`form-check-label text-${props.mode === 'dark' ? "light" : "dark"}`} htmlFor="flexSwitchCheckDefault">Dark Mode</label>
+                        </div>
                     </div>
                 </div>
             </nav>
@@ -45,15 +46,15 @@ function Navbar(props) {
 
 // to make it compulsory to give propTypes -- if we dont provide there values then it gives warning if there is no default propTypes
 Navbar.propTypes = {
-    brand : PropTypes.string.isRequired, 
-    about : PropTypes.string.isRequired 
+    brand: PropTypes.string.isRequired,
+    about: PropTypes.string.isRequired
 };
 
 
 // default values -- if we dont provide them in app.js
 Navbar.defaultProps = {
-    brand : "Default Brand",
-    about : "About"
+    brand: "Default Brand",
+    about: "About"
 };
 
 
