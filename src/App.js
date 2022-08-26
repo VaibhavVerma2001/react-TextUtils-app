@@ -69,7 +69,7 @@ function App() {
           {/* error page if no routes are there */}
           {/* <Route path="*" element={<Error />} /> */}
         </Routes>
-        {/* write footer here */}
+        {/* write footer here  */}
       </Router>
     </>
   );
