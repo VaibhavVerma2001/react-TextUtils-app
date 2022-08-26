@@ -6,9 +6,11 @@ import About from './components/about';
 import Alert from './components/Alert';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-//note npm i react-router-dom@6
-// we want to load only some content to our site when user click , without loading whole site
-
+// Note npm i react-router-dom@6
+// AIM -- to fix some issues like
+// 1 -- our layout is changing when alert coming (everything going down after alert)
+//2 -- even when input is empty and someone click button it is showing success message
+//3 -- word counter is saying 1 if there is no word and also count spaces
 
 function App() {
   const [mode, setMode] = useState("light"); // to check whether dark mode enabled or not
@@ -32,7 +34,7 @@ function App() {
       document.body.style.backgroundColor = '#052648';
       showAlert("Dark mode has been enabled", "success");
       // to change title dynamically
-      document.title = "Dark-mode";
+      // document.title = "Dark-mode";
 
       // to attract users like add sites do -- but very bad idea
       // setInterval(function(){
@@ -46,7 +48,7 @@ function App() {
       setMode('light');
       document.body.style.backgroundColor = '#fff';
       showAlert("Light mode has been enabled", "success");
-      document.title = "Light-mode";
+      // document.title = "Light-mode";
     }
   }
 
@@ -62,14 +64,11 @@ function App() {
 
         <Routes>
           {/* WRITE THOSE COMPONENTS WHO CHANGE FOR ALL PAGES HERE*/}
-          <Route path="/" element={<TextForm heading="Enter the text to analyze below" mode={mode} showAlert={showAlert} />} />
+          <Route path="/" element={<TextForm heading="Try TextUtils - Word Counter, Character Counter and much more" mode={mode} showAlert={showAlert} />} />
 
-          <Route path="/about" element={ <About />} />
+          <Route path="/about" element={ <About mode={mode} />} />
 
-          {/* error page if no routes are there */}
-          {/* <Route path="*" element={<Error />} /> */}
         </Routes>
-        {/* write footer here  */}
       </Router>
     </>
   );

@@ -22,7 +22,7 @@ function TextForm(props) {
     function handleClrClick() {
         let newText = '';
         setText(newText);
-         props.showAlert("Text cleared!", "success");
+        props.showAlert("Text cleared!", "success");
     }
 
     function handleTrim() {
@@ -35,7 +35,7 @@ function TextForm(props) {
         let newText = '';
         //  @?%$*/# 
         for (let i = 0; i < text.length; i++) {
-            if (text[i] === '@' || text[i] === '?' || text[i] === '%' || text[i] === '*' || text[i] === '/' || text[i] === '#' || text[i] === '$') {
+            if (text[i] === '@' || text[i] === '?' || text[i] === '%' || text[i] === '*' || text[i] === '/' || text[i] === '|' || text[i] === '#' || text[i] === '$') {
                 //do nothing
             }
             else {
@@ -66,6 +66,17 @@ function TextForm(props) {
         props.showAlert("Removed extra spaces!", "success");
     }
 
+    function wordCount(text) {
+        //filter function will add element only if given condition is true
+        // split with spaxe and newline \n
+        let newText = text.split(/\s+/).filter((element) => { return element.length !== 0 }); // if length !=0 only then will remain in array newText
+        return newText.length;
+    }
+
+    function minuteRead(text) {
+        // according to google it takes 0.008 min to read 1 word */} {/* toFixed(n) is used to round number upto 3 decimal places 
+        return (text.split(" ").filter((element) => { return element.length !== 0 }).length * 0.008).toFixed(3)
+    }
 
 
     function handleOnChange(event)//by defalut we get this variable in ha ndling event
@@ -81,23 +92,24 @@ function TextForm(props) {
                 <h1 className={`mb-3 mt-3 text-${props.mode === 'dark' ? "light" : "dark"}`}>{props.heading}</h1>
 
                 {/* to bgcolor using style */}
-                <textarea className="form-control mb-3" style={{ backgroundColor: props.mode === 'dark' ? "grey" : "white", color: props.mode === 'dark' ? "white" : "grey" }} id="myBox" rows="8" value={text} onChange={handleOnChange}></textarea> {/*used state */}
+                <textarea className="form-control mb-3" style={{ backgroundColor: props.mode === 'dark' ? "#19436D" : "white", color: props.mode === 'dark' ? "white" : "black" }} id="myBox" rows="8" value={text} onChange={handleOnChange}></textarea> {/*used state */}
 
-                <button className="btn btn-primary mb-3 margin-right" onClick={handleUpClick}>Convert to Uppercase</button>
-                <button className="btn btn-primary mb-3 margin-right" onClick={handleLoClick}>Convert to Lowercase</button>
-                <button className="btn btn-primary mb-3 margin-right" onClick={handleClrClick}>Clear Text</button>
-                <button className="btn btn-primary mb-3 margin-right" onClick={handleTrim}>Trim Text</button>
-                <button className="btn btn-primary mb-3 margin-right " onClick={handleInverse}>InverseCase</button>
-                <button className="btn btn-primary mb-3 margin-right" onClick={handleSymbols}>Remove @?%*/#$ </button>
-                <button className="btn btn-primary mb-3 margin-right " onClick={handleExtraSpaces}>Remove Extra Spaces</button>
+                {/* disable buttons when there is no text  */}
+                <button className="btn btn-primary mb-3 margin-right" disabled={text.length === 0} onClick={handleUpClick}>Convert to Uppercase</button>
+                <button className="btn btn-primary mb-3 margin-right" disabled={text.length === 0} onClick={handleLoClick}>Convert to Lowercase</button>
+                <button className="btn btn-primary mb-3 margin-right" disabled={text.length === 0} onClick={handleClrClick}>Clear Text</button>
+                <button className="btn btn-primary mb-3 margin-right" disabled={text.length === 0} onClick={handleTrim}>Trim Text</button>
+                <button className="btn btn-primary mb-3 margin-right " disabled={text.length === 0} onClick={handleInverse}>InverseCase</button>
+                <button className="btn btn-primary mb-3 margin-right" disabled={text.length === 0} onClick={handleSymbols}>Remove @?%*/#|$ </button>
+                <button className="btn btn-primary mb-3 margin-right " disabled={text.length === 0} onClick={handleExtraSpaces}>Remove Extra Spaces</button>
 
             </div>
 
             <div className="container">
                 <h1 className={`text-${props.mode === 'dark' ? "light" : "dark"}`}>Your text summary</h1>
-                <p className={`text-${props.mode === 'dark' ? "light" : "dark"}`} >{text.trim().split(" ").length} words, {text.length} characters</p>
-                {/* according to google it takes 0.008 min to read 1 word */} {/* toFixed(n) is used to round number upto 3 decimal places */}
-                <p className={`text-${props.mode === 'dark' ? "light" : "dark"}`}>{(text.trim().split(" ").length * 0.008).toFixed(3)} Minutes read</p>
+                <p className={`text-${props.mode === 'dark' ? "light" : "dark"}`} >{wordCount(text)} words, {text.length} characters</p>
+
+                <p className={`text-${props.mode === 'dark' ? "light" : "dark"}`}>{minuteRead(text)} Minutes read</p>
                 <h2 className={`text-${props.mode === 'dark' ? "light" : "dark"}`}>Preview</h2>
                 <p className={`text-${props.mode === 'dark' ? "light" : "dark"}`}>{text}</p>
             </div>
