@@ -1,9 +1,5 @@
-import React, { useState } from 'react'
+import { useState } from 'react';
 
-// let myStyle = {
-//     color:"white" ,
-//     backgroundColor : "black"
-// }
 
 function About() {
 
